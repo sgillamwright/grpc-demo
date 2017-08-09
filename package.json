@@ -1,0 +1,17 @@
+{
+  "name": "grpcdemo",
+  "version": "1.0.0",
+  "description": "A basic GRPC demo with 3 clients (node, php, go) and 1 server (node)",
+  "dependencies": {
+    "grpc": "^1.4.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "server": "node server/server.js",
+    "client:node": "node clients/node/index.js",
+    "client:php": "php clients/php/index.php",
+    "client:go": "go run clients/go/main.go"
+  },
+  "author": "Shawn Gillam-Wright",
+  "license": "MIT"
+}

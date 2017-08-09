@@ -1,0 +1,11 @@
+{
+    "require": {
+        "grpc/grpc": "^1.4",
+        "google/protobuf": "^3.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "": "Books/"
+        }
+    }
+}

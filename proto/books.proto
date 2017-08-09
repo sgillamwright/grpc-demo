@@ -1,0 +1,68 @@
+// Syntax the proto file uses
+syntax = "proto3";
+
+// Package Section [Optional]
+package Books;
+
+// My Books Service
+service BooksService {
+
+  // Get All Books
+  rpc getAllBooks (EmptyMessage) returns (BookListResponse) {};
+
+  // Stream of books
+  rpc getAllBooksStream (EmptyMessage) returns (stream Book) {};
+
+  // Get Single Book
+  rpc getOneBook (BookIDRequest) returns (Book) {}
+
+  // Add Book
+  rpc addBook (Book) returns (Book) {}
+
+  // Remove Book
+  rpc removeBook (BookIDRequest) returns (EmptyMessage) {}
+}
+
+// **** Request Messages ****
+
+// Message for handling an empty request
+message EmptyMessage {}
+
+// Message for handling only sending the ID
+message BookIDRequest {
+  string id = 1;
+}
+
+// Message for handling a Book list response
+message BookListResponse {
+  repeated Book books = 1;
+};
+
+// Message Type for handling a single Book
+message Book {
+  string id = 1;
+  string name = 2;
+  repeated Genre genres = 3;
+  Author author = 4;
+
+  enum Published {
+    UNPUBLISHED = 0;
+    PUBLISHED = 1;
+  }
+
+  Published published = 5;
+}
+
+// Message Type for handling a single genre
+message Genre {
+  string id = 1;
+  string name = 2;
+}
+
+// Message Type for handling a single author
+message Author {
+  string id = 1;
+  string name = 2;
+  string website = 3;
+  string description = 4;
+}
